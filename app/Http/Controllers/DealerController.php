@@ -16,7 +16,7 @@ class DealerController extends Controller
      */
     public function index()
     {
-        $dealers = Dealer::paginate(3);
+        //$dealers = Dealer::paginate(3);
 
         return DealerResource::collection($dealers);
     }
