@@ -20,10 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('dealers', 'DealerController@index');
 
-Route::get('dealers/{id}', 'DealerController@show');
+Route::get('dealer/{id}', 'DealerController@show');
 
 Route::post('dealer', 'DealerController@store');
 
-Route::put('dealers', 'DealerController@store');
+Route::put('dealer', 'DealerController@store');
 
-Route::delete('dealers', 'DealerController@destroy');
+Route::delete('dealer/{id}', 'DealerController@destroy');

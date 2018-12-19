@@ -39,7 +39,18 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dealer = $request->isMethod('put') ? Dealer::findOrFail
+        ($request->dealer_id) : new Dealer;
+
+        $dealer->id = $request->input('dealer_id');
+        $dealer->title = $request->input('title');
+        $dealer->body = $request->input('body');
+        $dealer->lat = $request->input('lat');
+        $dealer->lng = $request->input('lng');
+
+        if ($dealer->save()) {
+            return new DealerResource($dealer);
+        }
     }
 
     /**
@@ -86,6 +97,11 @@ class DealerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dealer = Dealer::findOrFail($id);
+
+        if ($dealer->delete()) {
+            return new DealerResource($dealer);
+        }
+        
     }
 }
