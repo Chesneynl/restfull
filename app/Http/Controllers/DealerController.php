@@ -48,8 +48,9 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        
-        if ($request->header('Content-Type') == 'application/json'
+        dd($request->header('Content-Type'));
+        if ($request->header('Content-Type') == 'application/json' || 
+            $request->header('Content-Type') == 'application/x-www-form-urlencoded'
             && $request->input('title') && $request->input('body')
             && $request->input('lat') && $request->input('lng')) {
             $dealer = $request->isMethod('put') ? Dealer::findOrFail
