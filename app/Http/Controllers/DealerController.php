@@ -46,10 +46,13 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->input('title'));
         $contentType = $request->headers->get('Content-Type');
 
         if ($contentType == "application/json" || 
-            $contentType == "application/x-www-form-urlencoded") {
+            $contentType == "application/x-www-form-urlencoded"
+            && $request->input('title') && $request->input('body')
+            && $request->input('lat') && $request->input('lng')) {
             $dealer = $request->isMethod('put') ? Dealer::findOrFail
             ($request->dealer_id) : new Dealer;
     
