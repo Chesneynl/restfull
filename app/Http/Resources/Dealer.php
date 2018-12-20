@@ -22,13 +22,8 @@ class Dealer extends JsonResource
             'title' => $this->title,
             'body' => $this->body,
             '_links' => [
-                'self' => [
-                    'href' => 'http://chesney.mach3test.com/api/dealer/' . parent::toArray($request)['id'],
-                ]
-                'collection' => [
-                    'href' => 'http://chesney.mach3test.com/api/dealers'
-                ]
-                
+                'self' => 'http://chesney.mach3test.com/api/dealer/' . parent::toArray($request)['id'],
+                'collection' => 'http://chesney.mach3test.com/api/dealers'
             ]
         ];
     }
