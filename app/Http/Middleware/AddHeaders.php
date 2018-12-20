@@ -17,8 +17,8 @@ class AddHeaders
     public function handle($request, Closure $next)
     {
         $response = $next($request);
-        $response->header('allow', 'GET, POST, DELETE, DESTROY,PUT');
-        $response->header('content-type ', 'application/json, application/x-www-form-urlencoded');
+        $response->header('allow', 'GET, POST, OPTIONS');
+        //$response->header('content-type ', 'application/json, application/x-www-form-urlencoded');
 
         return $response;
     }
