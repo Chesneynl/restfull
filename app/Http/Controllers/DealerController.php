@@ -16,7 +16,7 @@ class DealerController extends Controller
      */
     public function index()
     {
-        
+        header("Content-Type: application/json");
         if (isset($_GET['limit'])) {
             $dealers = Dealer::paginate($_GET['limit']);
         }
@@ -62,7 +62,8 @@ class DealerController extends Controller
             $dealer->lng = $request->input('lng');
     
             if ($dealer->save()) {
-                http_response_code(201);
+                header("Content-Type: application/json");
+                return new DealerResource($dealer);
             }
         }
         else {
