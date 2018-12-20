@@ -20,7 +20,7 @@ class DealerController extends Controller
             $dealers = Dealer::paginate($_GET['limit']);
         }
         else {
-            $dealers = Dealer::all();
+            $dealers = Dealer::paginate();
         }
         
 
