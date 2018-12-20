@@ -16,6 +16,7 @@ class DealerController extends Controller
      */
     public function index()
     {
+        
         if (isset($_GET['limit'])) {
             $dealers = Dealer::paginate($_GET['limit']);
         }
@@ -63,7 +64,7 @@ class DealerController extends Controller
             }
         }
         else {
-            return abort(405);
+            abort(405, "method not allowed");
         }
         
     }
