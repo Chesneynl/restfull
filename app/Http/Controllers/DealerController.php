@@ -16,7 +16,6 @@ class DealerController extends Controller
      */
     public function index()
     {
-
         if (isset($_GET['limit'])) {
             $dealers = Dealer::paginate($_GET['limit']);
         }
@@ -46,10 +45,7 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        $contentType = $_SERVER["CONTENT_TYPE"];
-
-        if ($contentType == "application/json" || 
-            $contentType == "application/x-www-form-urlencoded"
+        if ($_SERVER["CONTENT_TYPE"] == "application/json"
             && $request->input('title') && $request->input('body')
             && $request->input('lat') && $request->input('lng')) {
             $dealer = $request->isMethod('put') ? Dealer::findOrFail
