@@ -16,6 +16,7 @@ class DealerController extends Controller
      */
     public function index()
     {
+        header("Accept: application/json");
         header("Content-Type: application/json");
         if (isset($_GET['limit'])) {
             $dealers = Dealer::paginate($_GET['limit']);
@@ -62,6 +63,7 @@ class DealerController extends Controller
             $dealer->lng = $request->input('lng');
     
             if ($dealer->save()) {
+                header("Accept: application/json");
                 header("Content-Type: application/json");
                 return new DealerResource($dealer);
             }
@@ -124,6 +126,8 @@ class DealerController extends Controller
         $dealer = Dealer::findOrFail($id);
 
         if ($dealer->delete() && $contentType == "application/json" || $contentType == "application/x-www-form-urlencoded") {
+            header("Accept: application/json");
+            header("Content-Type: application/json");
             return new DealerResource($dealer);
         }
         else {
