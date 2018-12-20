@@ -119,8 +119,11 @@ class DealerController extends Controller
     {
         $dealer = Dealer::findOrFail($id);
 
-        if ($dealer->delete()) {
+        if ($dealer->delete() && $contentType == "application/json" || $contentType == "application/x-www-form-urlencoded") {
             return new DealerResource($dealer);
+        }
+        else {
+            return abort(404);
         }
     }
 }
