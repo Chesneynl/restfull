@@ -66,7 +66,7 @@ class DealerController extends Controller
             }
         }
         else {
-            abort(405, "method not allowed");
+            abort(415);
         }
         
     }
