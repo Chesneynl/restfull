@@ -14,7 +14,6 @@ class Dealer extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
 
         return [
             'id' => $this->id,
@@ -22,8 +21,8 @@ class Dealer extends JsonResource
             'lng' => $this->lng,
             'title' => $this->title,
             'body' => $this->body,
-            'links' => [
-                'self' => "test",
+            '_links' => [
+                'self' => 'http://chesney.mach3test.com/api/dealer/' . parent::toArray($request)['id'],
                 'collection' => 'http://chesney.mach3test.com/api/dealers'
             ]
         ];
