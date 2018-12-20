@@ -25,7 +25,7 @@ class DealerController extends Controller
         }
 
          
-        return DealerResource::collection($dealers)->header('Content-Type: application/json');
+        return DealerResource::collection($dealers);
 
         
     }
