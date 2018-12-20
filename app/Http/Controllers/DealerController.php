@@ -63,7 +63,7 @@ class DealerController extends Controller
             $dealer->lng = $request->input('lng');
     
             if ($dealer->save()) {
-                return new DealerResource($dealer);
+                http_response_code(201);
             }
         }
         else {
