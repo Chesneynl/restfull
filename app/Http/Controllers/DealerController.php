@@ -19,7 +19,7 @@ class DealerController extends Controller
         //$dealers = Dealer::paginate(3);
         $dealers = Dealer::all();
 
-        return DealerResource::collection($dealers);
+        return ['items' => DealerResource::collection($dealers)];
     }
 
     /**
