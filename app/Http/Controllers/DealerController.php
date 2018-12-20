@@ -16,6 +16,7 @@ class DealerController extends Controller
      */
     public function index()
     {
+        
         header("Content-Type: application/json");
         if (isset($_GET['limit'])) {
             $dealers = Dealer::paginate($_GET['limit']);
@@ -25,8 +26,8 @@ class DealerController extends Controller
         }
 
         
-        return $dealers->toJson();
-
+        return DealerResource::collection($dealers);
+        //return $dealers->toJson();
     }
 
     /**
