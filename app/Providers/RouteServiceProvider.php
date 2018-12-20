@@ -75,10 +75,10 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ], function ($router) {
-             //Add you routes here, for example:
+             Route::apiResource('dealers','DealerController');
              Route::apiResource('dealer','DealerController@store');
-             Route::apiResource('dealer','DealerController@store');
-             Route::apiResource('dealer/{id}','DealerController@destroy');
+             Route::apiResource('songs','SongController');
+             Route::apiResource('song','SongController@store');
         });
     }
 }
