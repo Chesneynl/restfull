@@ -46,7 +46,6 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input('title'));
         $contentType = $request->headers->get('Content-Type');
 
         if ($contentType == "application/json" || 
