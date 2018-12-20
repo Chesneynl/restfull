@@ -16,15 +16,18 @@ class DealerController extends Controller
      */
     public function index()
     {
+        
         if (isset($_GET['limit'])) {
             $dealers = Dealer::paginate($_GET['limit']);
         }
         else {
             $dealers = Dealer::paginate();
         }
-         
 
-        return DealerResource::collection($dealers);
+         
+        return DealerResource::collection($dealers)->header('Content-Type: application/json');
+
+        
     }
 
     /**
@@ -45,7 +48,8 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        if ($_SERVER["CONTENT_TYPE"] == "application/json"
+        
+        if ($request->header('Content-Type') == 'application/json'
             && $request->input('title') && $request->input('body')
             && $request->input('lat') && $request->input('lng')) {
             $dealer = $request->isMethod('put') ? Dealer::findOrFail
@@ -62,7 +66,7 @@ class DealerController extends Controller
             }
         }
         else {
-            http_response_code(400);    
+            http_response_code(415);    
         }
         
     }
