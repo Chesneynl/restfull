@@ -16,6 +16,7 @@ class Dealer extends JsonResource
     {
 
         return [ 
+            'item' => [
                 'id' => $this->id,
                 'lat' => $this->lat,
                 'lng' => $this->lng,
@@ -29,7 +30,7 @@ class Dealer extends JsonResource
                         'href' => 'http://chesney.mach3test.com/api/dealers',
                     ]
                 ]
-            
+            ]
         ];
     }
 

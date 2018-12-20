@@ -16,10 +16,15 @@ class DealerController extends Controller
      */
     public function index()
     {
-        //$dealers = Dealer::paginate(3);
-        $dealers = Dealer::all();
+        if (isset($_GET['limit'])) {
+            $dealers = Dealer::paginate($_GET['limit']);
+        }
+        else {
+            $dealers = Dealer::all();
+        }
+        
 
-        return ['items' => DealerResource::collection($dealers)];
+        return DealerResource::collection($dealers);
     }
 
     /**
