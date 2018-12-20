@@ -18,7 +18,6 @@ class AddHeaders
     {
         $response = $next($request);
         $response->header('allow', 'GET, POST, OPTIONS');
-        //$response->header('content-type ', 'application/json, application/x-www-form-urlencoded');
 
         return $response;
     }

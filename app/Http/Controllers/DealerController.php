@@ -63,7 +63,7 @@ class DealerController extends Controller
             }
         }
         else {
-            return abort(404);
+            return abort(405);
         }
         
     }
@@ -123,7 +123,7 @@ class DealerController extends Controller
             return new DealerResource($dealer);
         }
         else {
-            return abort(404);
+            return abort(405);
         }
     }
 }
