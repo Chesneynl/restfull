@@ -17,11 +17,21 @@ class Song extends JsonResource
         // return parent::toArray($request);
 
         return[
-            'id' => $this->id,
-            'songname' => $this->songname,
-            'artist' => $this->artist,
-            'album' => $this->album,
-            'review' => $this->review
+            'item'=>[
+                'id' => $this->id,
+                'songname' => $this->songname,
+                'artist' => $this->artist,
+                'album' => $this->album,
+                'review' => $this->review,
+                '_links' => [
+                    'self' => [
+                        'href' => 'http://chesney.mach3test.com/api/song/' . parent::toArray($request)['id'],
+                    ],
+                    'collection' => [
+                        'href' => 'http://chesney.mach3test.com/api/songs',
+                    ]
+                ]
+            ]
         ];
     }
 }
