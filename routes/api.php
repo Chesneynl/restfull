@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+// CORS
+header('Access-Control-Allow-Origin: http://chesney.mach3test.com/');
+header('Access-Control-Allow-Credentials: true');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -27,3 +31,5 @@ Route::post('dealer', 'DealerController@store');
 Route::put('dealer', 'DealerController@store');
 
 Route::delete('dealer/{id}', 'DealerController@destroy');
+
+Route::options('dealers', 'DealerController@index');

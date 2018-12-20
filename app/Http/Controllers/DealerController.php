@@ -90,6 +90,11 @@ class DealerController extends Controller
         //
     }
 
+    public function options(Request $request)
+    {
+        dd($request);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -103,6 +108,5 @@ class DealerController extends Controller
         if ($dealer->delete()) {
             return new DealerResource($dealer);
         }
-        
     }
 }
