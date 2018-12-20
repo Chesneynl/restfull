@@ -22,7 +22,7 @@ class DealerController extends Controller
         else {
             $dealers = Dealer::paginate();
         }
-        
+         
 
         return DealerResource::collection($dealers);
     }
