@@ -29,8 +29,6 @@ Route::put('dealer', 'DealerController@store');
 
 Route::delete('dealer/{id}', 'DealerController@destroy');
 
-Route::options('dealers', 'DealerController@index');
-
 
 //Songs
 Route::get('songs', 'SongController@index');
