@@ -16,8 +16,14 @@ class SongController extends Controller
      */
     public function index()
     {
+        $limit=count(Song::all());
+
+        if(isset($_GET['limit'])) {
+            $limit = $_GET['limit'];
+        }
+
         //Get songs
-        $songs = Song::paginate();
+        $songs = Song::paginate($limit);
 
         //Return collection of songs as a resource
         return SongResource::collection($songs);
