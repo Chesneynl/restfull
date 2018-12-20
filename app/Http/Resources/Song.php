@@ -14,6 +14,14 @@ class Song extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+
+        return[
+            'id' => $this->id,
+            'songname' => $this->songname,
+            'artist' => $this->artist,
+            'album' => $this->album,
+            'review' => $this->review
+        ];
     }
 }

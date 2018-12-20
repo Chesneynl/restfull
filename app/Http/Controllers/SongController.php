@@ -17,7 +17,7 @@ class SongController extends Controller
     public function index()
     {
         //Get songs
-        $songs = Song::paginate(5);
+        $songs = Song::paginate();
 
         //Return collection of songs as a resource
         return SongResource::collection($songs);
@@ -41,7 +41,19 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $song = $request->isMethod('put') ? Song::findOrFail
+        ($request->song_id) : new Song;
+
+        $song->id = $request->input('song_id');
+        $song->songname = $request->input('songname');
+        $song->artist = $request->input('artist');
+        $song->album = $request->input('album');
+        $song->review = $request->input('review');
+
+        if($song->save()){
+            return new SongResource($song);
+        }
+
     }
 
     /**
@@ -52,6 +64,7 @@ class SongController extends Controller
      */
     public function show($id)
     {
+        //Get Song
         $song = Song::findOrFail($id);
 
         return new SongResource($song);
@@ -88,6 +101,10 @@ class SongController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $song = Song::findOrFail($id);
+
+        if($song->delete()){
+            return new SongResource($song); 
+        }
     }
 }
