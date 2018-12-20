@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+//Dealers
 Route::get('dealers', 'DealerController@index');
 
 Route::get('dealer/{id}', 'DealerController@show');
@@ -30,3 +30,15 @@ Route::put('dealer', 'DealerController@store');
 Route::delete('dealer/{id}', 'DealerController@destroy');
 
 Route::options('dealers', 'DealerController@index');
+
+
+//Songs
+Route::get('songs', 'SongController@index');
+
+Route::get('song/{id}', 'SongController@show');
+
+Route::post('song', 'SongController@store');
+
+Route::put('songs', 'SongController@store');
+
+Route::delete('songs', 'SongController@destroy');
