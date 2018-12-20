@@ -26,7 +26,7 @@ class DealerController extends Controller
         }
 
         
-        return DealerResource::collection($dealers);
+        return $dealers->toJson();
         //return $dealers->toJson();
     }
 
