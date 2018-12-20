@@ -22,13 +22,17 @@ class Dealer extends JsonResource
             'lng' => $this->lng,
             'title' => $this->title,
             'body' => $this->body,
+            'links' => [
+                'self' => "test",
+                'collection' => 'http://chesney.mach3test.com/api/dealers'
+            ]
         ];
     }
 
     public function with($request) {
         return [
             'version' => '1.0',
-            'author' => 'Chesney Buitendijk'
+            'author' => 'Chesney Buitendijk',
         ];
     }
 }

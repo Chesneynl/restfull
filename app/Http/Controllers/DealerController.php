@@ -92,7 +92,7 @@ class DealerController extends Controller
 
     public function options(Request $request)
     {
-        dd($request);
+        
     }
 
     /**
