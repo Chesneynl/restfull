@@ -24,9 +24,15 @@ class DealerController extends Controller
             $dealers = Dealer::paginate();
         }
 
+        if ($_SERVER["HTTP_ACCEPT"] == "application/json" || $_SERVER["HTTP_ACCEPT"] == "application/xml") {
+            return $dealers->toJson();
+        }
+        else {
+            http_response_code(415);
+        }
         
-        return DealerResource::collection($dealers);
-        //return $dealers->toJson();
+        //return DealerResource::collection($dealers);
+        
     }
 
     /**
