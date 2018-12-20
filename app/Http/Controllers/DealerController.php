@@ -66,7 +66,7 @@ class DealerController extends Controller
             }
         }
         else {
-            abort(415);
+            abort(400);
         }
         
     }
