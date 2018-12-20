@@ -45,18 +45,27 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        $dealer = $request->isMethod('put') ? Dealer::findOrFail
-        ($request->dealer_id) : new Dealer;
+        $contentType = $request->headers->get('Content-Type');
 
-        $dealer->id = $request->input('dealer_id');
-        $dealer->title = $request->input('title');
-        $dealer->body = $request->input('body');
-        $dealer->lat = $request->input('lat');
-        $dealer->lng = $request->input('lng');
-
-        if ($dealer->save()) {
-            return new DealerResource($dealer);
+        if ($contentType == "application/json" || 
+            $contentType == "application/x-www-form-urlencoded") {
+            $dealer = $request->isMethod('put') ? Dealer::findOrFail
+            ($request->dealer_id) : new Dealer;
+    
+            $dealer->id = $request->input('dealer_id');
+            $dealer->title = $request->input('title');
+            $dealer->body = $request->input('body');
+            $dealer->lat = $request->input('lat');
+            $dealer->lng = $request->input('lng');
+    
+            if ($dealer->save()) {
+                return new DealerResource($dealer);
+            }
         }
+        else {
+            return abort(404);
+        }
+        
     }
 
     /**
