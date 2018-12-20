@@ -16,19 +16,22 @@ class DealerController extends Controller
      */
     public function index()
     {
-        header("Accept: application/json");
-        header("Content-Type: application/json");
-        if (isset($_GET['limit'])) {
-            $dealers = Dealer::paginate($_GET['limit']);
+        if ($_SERVER["HTTP_ACCEPT"] == "application/json") {
+            header("Accept: application/json");
+            header("Content-Type: application/json");
+            if (isset($_GET['limit'])) {
+                $dealers = Dealer::paginate($_GET['limit']);
+            }
+            else {
+                $dealers = Dealer::paginate();
+            }
+
+            
+            return DealerResource::collection($dealers);
         }
         else {
-            $dealers = Dealer::paginate();
+            http_response_code(415);   
         }
-
-         
-        return DealerResource::collection($dealers);
-
-        
     }
 
     /**
