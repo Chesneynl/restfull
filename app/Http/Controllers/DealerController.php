@@ -18,14 +18,10 @@ class DealerController extends Controller
     {
         
         if (isset($_GET['limit'])) {
-            $dealers = Dealer::paginate($_GET['limit']);
+            return Dealer::paginate($_GET['limit']);
         }
-        else {
-            $dealers = Dealer::paginate();
-        }
-
-        return DealerResource::collection($dealers);
-        //return $dealers->toJson();
+        
+           return Dealer::paginate();
     }
 
     /**
