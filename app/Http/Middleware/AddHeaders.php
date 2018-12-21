@@ -18,6 +18,7 @@ class AddHeaders
     {
         $response = $next($request);
         $response->header('allow', 'GET, POST, OPTIONS');
+        $response->header('Accept', 'application/json');
 
         return $response;
     }
