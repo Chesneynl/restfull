@@ -16,11 +16,11 @@ class DealerController extends Controller
      */
     public function index()
     {
-        
+
         if (isset($_GET['limit'])) {
             return Dealer::paginate($_GET['limit']);
         }
-        
+
            return Dealer::paginate();
     }
 
@@ -42,27 +42,27 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->header('Content-Type') == 'application/json' || 
+        if ($request->header('Content-Type') == 'application/json' ||
             $request->header('Content-Type') == 'application/x-www-form-urlencoded'
             && $request->input('title') && $request->input('body')
             && $request->input('lat') && $request->input('lng')) {
             $dealer = $request->isMethod('put') ? Dealer::findOrFail
             ($request->dealer_id) : new Dealer;
-    
+
             $dealer->id = $request->input('dealer_id');
             $dealer->title = $request->input('title');
             $dealer->body = $request->input('body');
             $dealer->lat = $request->input('lat');
             $dealer->lng = $request->input('lng');
-    
+
             if ($dealer->save()) {
                 return new DealerResource($dealer);
             }
         }
         else {
-            http_response_code(415);    
+            http_response_code(415);
         }
-        
+
     }
 
     /**
@@ -103,7 +103,7 @@ class DealerController extends Controller
 
     public function options(Request $request)
     {
-        
+
     }
 
     /**

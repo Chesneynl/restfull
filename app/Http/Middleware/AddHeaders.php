@@ -16,9 +16,13 @@ class AddHeaders
      */
     public function handle($request, Closure $next)
     {
+        $request->expectsJson();
+
+        if (! $request->wantsJson()) {
+            abort(406, 'Invalid accept header');
+        }
+
         $response = $next($request);
-        $response->header('allow', 'GET, POST, OPTIONS');
-        $response->header('Accept', 'application/json');
 
         return $response;
     }
