@@ -18,9 +18,9 @@ class AddHeaders
     {
         $request->expectsJson();
 
-        if (! $request->wantsJson()) {
-            abort(415);
-        }
+        // if (! $request->wantsJson()) {
+        //     abort(415);
+        // }
 
         $response = $next($request);
 
